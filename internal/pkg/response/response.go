@@ -66,3 +66,8 @@ func (r Response) Send(ctx *gin.Context) {
 	ctx.JSON(r.HttpCode, r)
 	return
 }
+
+func (r Response) SendAbort(ctx *gin.Context) {
+	ctx.AbortWithStatusJSON(r.HttpCode, r)
+	return
+}

@@ -57,7 +57,7 @@ func (s authService) Register(ctx context.Context, req dto.AuthRequest) (dto.Aut
 }
 
 func (s authService) Login(ctx context.Context, req dto.LoginRequest) (dto.LoginResponse, error) {
-	user, err := s.AuthRepository.GetUserByEmail(ctx, req.Email)
+	user, err := s.AuthRepository.FindUserByEmail(ctx, req.Email)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			log.Printf("invalid user email")

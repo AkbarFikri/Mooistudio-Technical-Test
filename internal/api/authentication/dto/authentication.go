@@ -21,3 +21,8 @@ type LoginResponse struct {
 	Token     string `json:"token"`
 	ExpiredAt int64  `json:"expired_at"`
 }
+
+type UserTokenData struct {
+	ID    string `json:"id"`
+	Email string `json:"email"`
+}

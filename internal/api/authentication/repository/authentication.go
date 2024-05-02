@@ -9,7 +9,7 @@ import (
 type AuthRepository interface {
 	Save(ctx context.Context, user domain.User) error
 	CountEmail(ctx context.Context, email string) (int, error)
-	GetUserByEmail(ctx context.Context, email string) (domain.User, error)
+	FindUserByEmail(ctx context.Context, email string) (domain.User, error)
 }
 
 type authRepository struct {
@@ -58,7 +58,7 @@ func (r *authRepository) CountEmail(ctx context.Context, email string) (int, err
 	return count, nil
 }
 
-func (r *authRepository) GetUserByEmail(ctx context.Context, email string) (domain.User, error) {
+func (r *authRepository) FindUserByEmail(ctx context.Context, email string) (domain.User, error) {
 	arg := map[string]interface{}{
 		"email": email,
 	}

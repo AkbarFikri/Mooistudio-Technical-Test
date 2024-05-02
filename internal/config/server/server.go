@@ -4,6 +4,9 @@ import (
 	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/handler"
 	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/repository"
 	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/service"
+	handler2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/handler"
+	repository2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/repository"
+	service2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/service"
 	"github.com/AkbarFikri/mooistudio_technical_test/internal/config/database"
 	"github.com/gin-gonic/gin"
 )
@@ -32,7 +35,11 @@ func New(app *gin.Engine) *Server {
 	authService := service.NewAuthService(authRepo)
 	authHandler := handler.NewAuthHandler(authService)
 
-	s.handlers = []Handler{authHandler}
+	productRepo := repository2.NewProductRepository(db)
+	productService := service2.NewProductService(productRepo)
+	productHandler := handler2.NewProductHandler(productService)
+
+	s.handlers = []Handler{authHandler, productHandler}
 
 	return s
 }

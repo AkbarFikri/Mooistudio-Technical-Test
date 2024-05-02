@@ -15,4 +15,6 @@ type Product struct {
 
 func (p *Product) Create() {
 	p.ID = uuid.NewString()
+	p.CreatedAt = time.Now()
+	p.UpdatedAt = time.Now()
 }
