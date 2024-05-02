@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS products (
     price bigint NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) `
+);`
 
 const categoryTable = `
 CREATE TABLE IF NOT EXISTS categories (

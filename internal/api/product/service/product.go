@@ -42,6 +42,7 @@ func (s *productService) CreateProduct(ctx context.Context, req dto.ProductReque
 		ID:          product.ID,
 		Name:        product.Name,
 		CategoryID:  product.CategoryID,
+		Price:       product.Price,
 		Description: product.Description,
 	}, nil
 }
