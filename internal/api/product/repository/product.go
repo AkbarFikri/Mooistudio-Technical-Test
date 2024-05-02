@@ -9,6 +9,7 @@ import (
 type ProductRepository interface {
 	Save(ctx context.Context, product domain.Product) error
 	FindAll(ctx context.Context) ([]domain.Product, error)
+	FindOne(ctx context.Context, id string) (domain.Product, error)
 }
 
 type productRepository struct {
@@ -23,6 +24,8 @@ func (r *productRepository) Save(ctx context.Context, product domain.Product) er
 	arg := map[string]interface{}{
 		"id":          product.ID,
 		"name":        product.Name,
+		"category_id": product.CategoryID,
+		"price":       product.Price,
 		"description": product.Description,
 		"created_at":  product.CreatedAt,
 		"updated_at":  product.UpdatedAt,
@@ -65,4 +68,29 @@ func (r *productRepository) FindAll(ctx context.Context) ([]domain.Product, erro
 		products = append(products, product)
 	}
 	return products, nil
+}
+
+func (r *productRepository) FindOne(ctx context.Context, id string) (domain.Product, error) {
+	arg := map[string]interface{}{
+		"id": id,
+	}
+
+	query, args, err := sqlx.Named(GetProductById, arg)
+	if err != nil {
+		return domain.Product{}, err
+	}
+
+	query, args, err = sqlx.In(query, args...)
+	if err != nil {
+		return domain.Product{}, err
+	}
+	query = r.db.Rebind(query)
+
+	var product domain.Product
+
+	if err := r.db.QueryRowxContext(ctx, query, args...).StructScan(&product); err != nil {
+		return domain.Product{}, err
+	}
+
+	return product, nil
 }

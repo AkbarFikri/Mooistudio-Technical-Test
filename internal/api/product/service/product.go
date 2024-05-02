@@ -27,6 +27,8 @@ func NewProductService(pr repository.ProductRepository) ProductService {
 func (s *productService) CreateProduct(ctx context.Context, req dto.ProductRequest) (dto.ProductResponse, error) {
 	product := domain.Product{
 		Name:        req.Name,
+		CategoryID:  req.CategoryID,
+		Price:       req.Price,
 		Description: req.Description,
 	}
 	product.Create()
@@ -39,6 +41,7 @@ func (s *productService) CreateProduct(ctx context.Context, req dto.ProductReque
 	return dto.ProductResponse{
 		ID:          product.ID,
 		Name:        product.Name,
+		CategoryID:  product.CategoryID,
 		Description: product.Description,
 	}, nil
 }
@@ -56,6 +59,9 @@ func (s *productService) FetchProduct(ctx context.Context) ([]dto.ProductRespons
 		res = append(res, dto.ProductResponse{
 			ID:          p.ID,
 			Name:        p.Name,
+			CategoryID:  p.CategoryID,
+			Category:    p.Category,
+			Price:       p.Price,
 			Description: p.Description,
 		})
 	}
