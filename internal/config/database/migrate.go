@@ -42,8 +42,26 @@ CREATE TABLE IF NOT EXISTS carts (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )`
 
+const orderTable = `
+CREATE TABLE IF NOT EXISTS orders (
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    user_id VARCHAR(255) REFERENCES users(id) ON DELETE CASCADE,
+    total bigint NOT NULL,
+    status VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)`
+
+const orderItemTable = `
+CREATE TABLE IF NOT EXISTS order_items (
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    order_id varchar(255) REFERENCES orders(id) ON DELETE CASCADE,
+    product_id VARCHAR(255) REFERENCES products(id) ON DELETE CASCADE,
+    quantity INT NOT NULL
+)`
+
 func MigrateDB(db *sqlx.DB) error {
-	tables := []string{cartTable, categoryTable, userTable, productTable}
+	tables := []string{orderTable, orderItemTable, cartTable, categoryTable, userTable, productTable}
 	for _, table := range tables {
 		_, err := db.Exec(table)
 		if err != nil {

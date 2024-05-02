@@ -7,6 +7,9 @@ import (
 	handler3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/handler"
 	repository3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/repository"
 	service3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/service"
+	handler4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/handler"
+	repository4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/repository"
+	service4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/service"
 	handler2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/handler"
 	repository2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/repository"
 	service2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/service"
@@ -48,7 +51,11 @@ func New(app *gin.Engine) *Server {
 	cartService := service3.NewCartService(cartRepo, productRepo)
 	cartHandler := handler3.NewCartHandler(cartService)
 
-	s.handlers = []Handler{authHandler, productHandler, cartHandler}
+	orderRepo := repository4.NewOrderRepository(db)
+	orderService := service4.NewOrderService(orderRepo, cartRepo)
+	orderHandler := handler4.NewOrderHandler(orderService)
+
+	s.handlers = []Handler{authHandler, productHandler, cartHandler, orderHandler}
 
 	return s
 }

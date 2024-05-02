@@ -14,6 +14,7 @@ import (
 type CartService interface {
 	CreateCart(ctx context.Context, user dto2.UserTokenData, req dto.CartRequest) (dto.CartResponse, error)
 	FetchUserCart(ctx context.Context, user dto2.UserTokenData) (dto.CartListResponse, error)
+	DeleteCart(ctx context.Context, id string) error
 }
 
 type cartService struct {
@@ -81,4 +82,19 @@ func (c cartService) FetchUserCart(ctx context.Context, user dto2.UserTokenData)
 		Count: len(cartResponses),
 		Items: cartResponses,
 	}, nil
+}
+
+func (c cartService) DeleteCart(ctx context.Context, id string) error {
+	cart, err := c.CartRepository.FindOneById(ctx, id)
+	if err != nil {
+		log.Printf("error failed to find cart %v", err)
+		return customErr.ErrorNotFound
+	}
+
+	if err := c.CartRepository.DeleteById(ctx, cart.ID); err != nil {
+		log.Printf("error failed to delete cart %v", err)
+		return customErr.ErrorGeneral
+	}
+
+	return nil
 }

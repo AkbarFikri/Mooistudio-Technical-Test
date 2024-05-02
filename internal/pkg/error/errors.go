@@ -38,4 +38,7 @@ var (
 	ErrorEmailAlreadyUsed       = NewError("email already used", http.StatusBadRequest)
 	ErrorInvalidEmailOrPassword = NewError("invalid email or password", http.StatusBadRequest)
 	ErrorInvalidAccessToken     = NewError("access token invalid or expire", http.StatusBadRequest)
+
+	//Order
+	ErrorNoCart = NewError("no cart in your shopping cart", http.StatusBadRequest)
 )

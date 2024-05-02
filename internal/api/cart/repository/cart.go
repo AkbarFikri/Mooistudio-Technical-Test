@@ -9,6 +9,9 @@ import (
 type CartRepository interface {
 	Save(ctx context.Context, cart domain.Cart) error
 	FindByUserId(ctx context.Context, id string) ([]domain.Cart, error)
+	FindOneById(ctx context.Context, id string) (domain.Cart, error)
+	DeleteByUserId(ctx context.Context, id string) error
+	DeleteById(ctx context.Context, id string) error
 }
 
 type cartRepository struct {
@@ -70,4 +73,74 @@ func (r cartRepository) FindByUserId(ctx context.Context, id string) ([]domain.C
 		carts = append(carts, cart)
 	}
 	return carts, nil
+}
+
+func (r cartRepository) DeleteByUserId(ctx context.Context, id string) error {
+	arg := map[string]interface{}{
+		"user_id": id,
+	}
+
+	query, args, err := sqlx.Named(DeleteAllByUserId, arg)
+	if err != nil {
+		return err
+	}
+
+	query, args, err = sqlx.In(query, args...)
+	if err != nil {
+		return err
+	}
+	query = r.db.Rebind(query)
+
+	if _, err := r.db.ExecContext(ctx, query, args...); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r cartRepository) DeleteById(ctx context.Context, id string) error {
+	arg := map[string]interface{}{
+		"id": id,
+	}
+
+	query, args, err := sqlx.Named(DeleteCart, arg)
+	if err != nil {
+		return err
+	}
+
+	query, args, err = sqlx.In(query, args...)
+	if err != nil {
+		return err
+	}
+	query = r.db.Rebind(query)
+
+	if _, err := r.db.ExecContext(ctx, query, args...); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r cartRepository) FindOneById(ctx context.Context, id string) (domain.Cart, error) {
+	arg := map[string]interface{}{
+		"id": id,
+	}
+
+	query, args, err := sqlx.Named(GetById, arg)
+	if err != nil {
+		return domain.Cart{}, err
+	}
+
+	query, args, err = sqlx.In(query, args...)
+	if err != nil {
+		return domain.Cart{}, err
+	}
+	query = r.db.Rebind(query)
+
+	var cart domain.Cart
+	if err := r.db.QueryRowxContext(ctx, query, args...).StructScan(&cart); err != nil {
+		return domain.Cart{}, err
+	}
+
+	return cart, nil
 }

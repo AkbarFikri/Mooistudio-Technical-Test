@@ -29,3 +29,20 @@ FROM
     carts
 JOIN products ON carts.product_id = products.id
 WHERE carts.user_id = :user_id`
+
+const DeleteAllByUserId = `
+DELETE FROM carts
+WHERE user_id = :user_id`
+
+const DeleteCart = `
+DELETE FROM carts
+WHERE id = :id`
+
+const GetById = `
+SELECT
+	*
+FROM
+    carts
+WHERE id = :id
+LIMIT 1
+`

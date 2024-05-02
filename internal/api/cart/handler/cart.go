@@ -27,6 +27,7 @@ func (h *CartHandler) Endpoints(s *gin.RouterGroup) {
 	cart := s.Group("cart")
 	cart.POST("/", middleware.JwtUser(), h.Create)
 	cart.GET("/", middleware.JwtUser(), h.Get)
+	cart.DELETE("/:id", middleware.JwtUser(), h.Delete)
 }
 
 func (h *CartHandler) Create(ctx *gin.Context) {
@@ -71,5 +72,27 @@ func (h *CartHandler) Get(ctx *gin.Context) {
 		response.WithPayload(payload),
 		response.WithMessage("successfully find all user cart"),
 		response.WithHttpCode(http.StatusOK),
+	).Send(ctx)
+}
+
+func (h *CartHandler) Delete(ctx *gin.Context) {
+	c, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
+	id := ctx.Param("id")
+	if id == "" {
+		err := customErr.ErrorBadRequest
+		response.New(response.WithError(err)).Send(ctx)
+		return
+	}
+
+	if err := h.CartService.DeleteCart(c, id); err != nil {
+		response.New(response.WithError(err)).Send(ctx)
+		return
+	}
+
+	response.New(
+		response.WithHttpCode(http.StatusOK),
+		response.WithMessage("successfully delete cart"),
 	).Send(ctx)
 }
