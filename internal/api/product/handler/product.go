@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/dto"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/service"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/middleware"
-	customErr "github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/error"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/response"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/dto"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/service"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/middleware"
+	customErr "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/error"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/response"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/net/context"
 	"net/http"

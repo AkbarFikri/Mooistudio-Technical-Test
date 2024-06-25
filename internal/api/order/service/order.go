@@ -1,12 +1,12 @@
 package service
 
 import (
-	dto2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/dto"
-	repository2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/repository"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/dto"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/repository"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/domain"
-	customErr "github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/error"
+	dto2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/authentication/dto"
+	repository2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/cart/repository"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/dto"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/repository"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/domain"
+	customErr "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/error"
 	"golang.org/x/net/context"
 	"log"
 )

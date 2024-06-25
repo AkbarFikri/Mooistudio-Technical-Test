@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/service"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/middleware"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/helper"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/response"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/service"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/middleware"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/helper"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/response"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/net/context"
 	"net/http"

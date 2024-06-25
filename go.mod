@@ -1,4 +1,4 @@
-module github.com/AkbarFikri/mooistudio_technical_test
+module github.com/AkbarFikri/Mooistudio-Technical-Test
 
 go 1.21
 

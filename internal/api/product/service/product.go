@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/dto"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/repository"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/domain"
-	customErr "github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/error"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/dto"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/repository"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/domain"
+	customErr "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/error"
 	"golang.org/x/net/context"
 	"log"
 )

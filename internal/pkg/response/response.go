@@ -1,7 +1,7 @@
 package response
 
 import (
-	customErr "github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/error"
+	customErr "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/error"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/pkg/jwt"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/pkg/jwt"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 	"log"

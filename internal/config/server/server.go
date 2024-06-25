@@ -1,19 +1,19 @@
 package server
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/handler"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/repository"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/service"
-	handler3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/handler"
-	repository3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/repository"
-	service3 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/cart/service"
-	handler4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/handler"
-	repository4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/repository"
-	service4 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/order/service"
-	handler2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/handler"
-	repository2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/repository"
-	service2 "github.com/AkbarFikri/mooistudio_technical_test/internal/api/product/service"
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/config/database"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/authentication/handler"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/authentication/repository"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/authentication/service"
+	handler3 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/cart/handler"
+	repository3 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/cart/repository"
+	service3 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/cart/service"
+	handler4 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/handler"
+	repository4 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/repository"
+	service4 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/order/service"
+	handler2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/handler"
+	repository2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/repository"
+	service2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/product/service"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/config/database"
 	"github.com/gin-gonic/gin"
 )
 

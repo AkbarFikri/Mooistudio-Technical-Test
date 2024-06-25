@@ -1,7 +1,7 @@
 package main
 
 import (
-	server2 "github.com/AkbarFikri/mooistudio_technical_test/internal/config/server"
+	server2 "github.com/AkbarFikri/Mooistudio-Technical-Test/internal/config/server"
 	"github.com/gin-gonic/gin"
 	"github.com/lpernett/godotenv"
 )

@@ -1,7 +1,7 @@
 package helper
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/api/authentication/dto"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/api/authentication/dto"
 	"github.com/gin-gonic/gin"
 )
 

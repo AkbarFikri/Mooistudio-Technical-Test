@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/AkbarFikri/mooistudio_technical_test/internal/domain"
+	"github.com/AkbarFikri/Mooistudio-Technical-Test/internal/domain"
 	"github.com/jmoiron/sqlx"
 	"golang.org/x/net/context"
 )
